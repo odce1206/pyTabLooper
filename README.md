@@ -1,5 +1,5 @@
 # pyTabLooper
-# Orlando Cuevas
+## Orlando Cuevas
 
 ## Dependencias:
 
