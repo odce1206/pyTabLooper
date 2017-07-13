@@ -1,6 +1,7 @@
 import time
 import webbrowser
 import configparser
+import sys
 from pykeyboard import PyKeyboard
 
 validador = 1
