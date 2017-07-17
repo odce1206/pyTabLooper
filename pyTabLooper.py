@@ -1,6 +1,6 @@
 import time
 import webbrowser
-import configparser
+import ConfigParser
 import sys
 from pykeyboard import PyKeyboard
 
@@ -8,7 +8,7 @@ validador = 1
 intervalos = 5
 kInput = PyKeyboard()
 
-config = configparser.ConfigParser()
+config = ConfigParser.RawConfigParser()
 config.read('config.ini')
 
 dictURL = {}
@@ -18,17 +18,21 @@ for secciones in config.sections():
         dictURL[secciones][opcion] = config.get(secciones,opcion)
 
 # crear lista de urls
-for k, v  in dictURL.items():
+dictLinks = []
+for k, v  in dictURL.iteritems():
     dictLinks = list(dictURL[k].keys())
 
 # Crear lista de minutos
-for k, v in dictURL.items():
+listNum = []
+for k, v in dictURL.iteritems():
     listNum = list(map(float, dictURL[k].values()))
 
 for contador in range(len(dictLinks)):
     urlOpen = dictLinks[contador]
+    prefixx = "http://"
+    urlFixed = prefixx+urlOpen
     time.sleep(.05)
-    webbrowser.open(urlOpen)
+    webbrowser.open_new(urlFixed)
 
 time.sleep(.3)
 kInput.press_key(kInput.control_key)
