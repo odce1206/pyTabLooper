@@ -22,6 +22,11 @@ dictLinks = []
 for k, v  in dictURL.iteritems():
     dictLinks = list(dictURL[k].keys())
 
+time.sleep(.3)
+kInput.tap_key(kInput.function_keys[12]) 
+
+time.sleep(.3)
+
 # Crear lista de minutos
 listNum = []
 for k, v in dictURL.iteritems():

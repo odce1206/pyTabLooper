@@ -1,0 +1,25 @@
+################# pyTabLooper #################
+
+#### Linux ####
+Dependencias necesarias:
+    - Xlib
+
+#### Windows ####
+Dependencias necesarias:
+    - pywin32
+    - pyhook
+
+1- Instalar python 2.7 y pyPi
+    1-1 - pyPi se instala con el script llamado get-pip.py - en terminal correr python get-pip.py
+2. Asegurarse de que python este configurado en el PATH
+3. Abrir una ventana del navegador
+4. Correr el programa
+    4-1. en caso de ser en Windows, correr el archivo run.bat
+    4-2. en caso de ser Linux, correr en terminal: ./runScript.sh
+
+#### Para agregar links y tiempos diferentes ####
+
+1. Abrir archivo config.ini
+2. Modificar lista de links
+** El formato para los links es: 
+    *link*      = *tiempoEnMinutos*
