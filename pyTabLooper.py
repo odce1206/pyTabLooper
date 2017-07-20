@@ -9,6 +9,9 @@ intervalos = 5
 kInput = PyKeyboard()
 
 config = ConfigParser.RawConfigParser()
+time.sleep(.2)
+config.optionxform = str
+time.sleep(.3)
 config.read('config.ini')
 
 dictURL = {}
@@ -18,12 +21,23 @@ for secciones in config.sections():
         dictURL[secciones][opcion] = config.get(secciones,opcion)
 
 # crear lista de urls
+# def print_dict(d):
+#     urlConverted = {}
+#     for k, v in d.iteritems():
+#         if isinstance(v, dict):
+#             v = print_dict(v)
+#         new[k.replace('.', '-')] = v
+# return urlConverted
+
 dictLinks = []
 for k, v  in dictURL.iteritems():
-    dictLinks = list(dictURL[k].keys())
+    dictLinks = dictURL[k].keys()
+    # keyItemsFin = strReplace.replace("_","=")
 
 time.sleep(.3)
-kInput.tap_key(kInput.function_keys[12]) 
+
+for i, s in enumerate(dictLinks):
+    dictLinks[i] = s.replace("_","=")
 
 time.sleep(.3)
 
