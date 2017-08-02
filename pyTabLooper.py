@@ -1,6 +1,7 @@
 import time
 import webbrowser
 import ConfigParser
+import yaml
 import sys
 from pykeyboard import PyKeyboard
 
@@ -8,49 +9,27 @@ validador = 1
 intervalos = 5
 kInput = PyKeyboard()
 
-config = ConfigParser.RawConfigParser()
-time.sleep(.2)
-config.optionxform = str
-time.sleep(.3)
-config.read('config.ini')
+preConfig = open('links.yaml')
+config = yaml.load(preConfig)
+preConfig.close()
 
 dictURL = {}
-for secciones in config.sections():
-    dictURL[secciones] = {}
-    for opcion in config.options(secciones):
-        dictURL[secciones][opcion] = config.get(secciones,opcion)
-
-# crear lista de urls
-# def print_dict(d):
-#     urlConverted = {}
-#     for k, v in d.iteritems():
-#         if isinstance(v, dict):
-#             v = print_dict(v)
-#         new[k.replace('.', '-')] = v
-# return urlConverted
-
 dictLinks = []
-for k, v  in dictURL.iteritems():
-    dictLinks = dictURL[k].keys()
-    # keyItemsFin = strReplace.replace("_","=")
-
-time.sleep(.3)
-
-for i, s in enumerate(dictLinks):
-    dictLinks[i] = s.replace("_","=")
-
+for k, v  in config.iteritems():
+    dictLinks = config[k].keys()
 time.sleep(.3)
 
 # Crear lista de minutos
 listNum = []
-for k, v in dictURL.iteritems():
-    listNum = list(map(float, dictURL[k].values()))
+for k, v in config.iteritems():
+    listNum = list(map(float, config[k].values()))
 
 for contador in range(len(dictLinks)):
+    time.sleep(.05)
     urlOpen = dictLinks[contador]
     prefixx = "http://"
     urlFixed = prefixx+urlOpen
-    time.sleep(.05)
+    time.sleep(.08)
     webbrowser.open_new(urlFixed)
 
 time.sleep(.3)

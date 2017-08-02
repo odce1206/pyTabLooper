@@ -1,3 +1,3 @@
 @echo off
 title pyTabLooper
-python pyTabLooper.py
+C:\Python27\python pyTabLooper.py
